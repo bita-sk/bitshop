@@ -4,6 +4,12 @@ parameters:
     #parameter_name: value
 
 services:
-    #service_name:
-    #    class: AppBundle\Directory\ClassName
-    #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+    app.product.service:
+        class:   AppBundle\Service\ProductService
+        arguments: ['@doctrine.orm.default_entity_manager']
+    app.category.service:
+        class:   AppBundle\Service\CategoryService
+        arguments: ['@doctrine.orm.default_entity_manager']
+    app.producer.service:
+        class:   AppBundle\Service\ProducerService
+        arguments: ['@doctrine.orm.default_entity_manager']

@@ -14,15 +14,22 @@
 
 </head>
 <body>
+
+{% for flash_message in app.session.flashBag.get('success') %}
+    <div class="flash-success">
+        {{ flash_message }}
+    </div>
+{% endfor %}
+
 <header>
     <a id="logo" href="/">BitShop - Administrace</a>
     <ul id="menu">
-        <li><a href="admin/product">Produkty</a></li>
-        <li><a href="admin/category">Kategorie</a></li>
-        <li><a href="admin/producer">Výrobci</a></li>
-        <li><a href="admin/feed">Feeds</a></li>
-        <li><a href="admin/costumer">Zákazníci</a></li>
-        <li><a href="admin/order">Objednávky</a></li>
+        <li><a href="/admin/product">Produkty</a></li>
+        <li><a href="/admin/category">Kategorie</a></li>
+        <li><a href="/admin/producer">Výrobci</a></li>
+        <li><a href="/admin/feed">Feeds</a></li>
+        <li><a href="/admin/costumer">Zákazníci</a></li>
+        <li><a href="/admin/order">Objednávky</a></li>
     </ul>
 </header>
 

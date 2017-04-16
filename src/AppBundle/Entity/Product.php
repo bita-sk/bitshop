@@ -61,9 +61,16 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="unit_price", type="decimal", precision=7, scale=2, nullable=true)
+     * @ORM\Column(name="slug", type="string", length=255)
      */
-    private $unitPrice;
+    private $slug;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
 
     /**
      * @var int
@@ -119,7 +126,7 @@ class Product
     }
 
     /**
-     * @return int
+     * @return Category
      */
     public function getCategory()
     {
@@ -127,11 +134,35 @@ class Product
     }
 
     /**
-     * @param int $category
+     * @param Category $category
      */
     public function setCategory($category)
     {
+        if ($category == "") {
+            $category = null;
+        }
+
         $this->category = $category;
+    }
+
+    /**
+     * @return Producer
+     */
+    public function getProducer()
+    {
+        return $this->producer;
+    }
+
+    /**
+     * @param Producer $producer
+     */
+    public function setProducer($producer)
+    {
+        if($producer == ""){
+            $producer = null;
+        }
+
+        $this->producer = $producer;
     }
 
     /**
@@ -167,22 +198,6 @@ class Product
     }
 
     /**
-     * @return string
-     */
-    public function getUnitPrice()
-    {
-        return $this->unitPrice;
-    }
-
-    /**
-     * @param string $unitPrice
-     */
-    public function setUnitPrice($unitPrice)
-    {
-        $this->unitPrice = $unitPrice;
-    }
-
-    /**
      * @return int
      */
     public function getStock()
@@ -197,6 +212,71 @@ class Product
     {
         $this->stock = $stock;
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdateAt()
+    {
+        return $this->updateAt;
+    }
+
+    /**
+     * @param \DateTime $updateAt
+     */
+    public function setUpdateAt($updateAt)
+    {
+        $this->updateAt = $updateAt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
 
 
 }

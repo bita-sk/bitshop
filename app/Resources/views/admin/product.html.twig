@@ -1,5 +1,5 @@
 {% extends 'admin/layout.html.twig' %}
-
+{% block title %}BitShop - produkty{% endblock %}
 {% block body %}
     <div class="sub-menu">
         <ul>
@@ -22,6 +22,10 @@
                 <td><input type="text" name="product_category"/> <a href="#" class="help" title="Kategorii můžete uvést později. Nejdříve je nutné nějakou přidat, před přiřazením k produktu">?</a></td>
             </tr>
             <tr>
+                <td><label for="product_producer">Výrobce</label></td>
+                <td><input type="text" name="product_producer"/> <a href="#" class="help" title="Výrobce můžete uvést později. Nejdříve je nutné nějakého přidat, před přiřazením k produktu">?</a></td>
+            </tr>
+            <tr>
                 <td><label for="product_price">Cena</label></td>
                 <td><input type="number" name="product_price"/> <a href="#" class="help" title="Cenu uvádějte bez DHP, bude automaticko dopočítano podle nastavené sazby">?</a> </td>
             </tr>
@@ -29,7 +33,7 @@
                 <td><label for="product_ean">Ean</label></td>
                 <td><input type="text" name="product_ean"/> <a href="#" title="Mezinárodní číslo obchodní položky, je jednotná mezinárodní číselná identifikace zejména spotřebních výrobků a dalších obchodovatelných položek, která se na výrobky často tiskne v podobě čárového kódu" class="help">?</a></td>
             </tr>
-            <tr>
+           <!-- <tr>
                 <td><label for="product_unit_price">Cena za jednotku</label></td>
                 <td>
                     <input type="number" name="product_unit_price"/> kč  za
@@ -46,10 +50,10 @@
                         <option value="liter">Litrů</option>
                     </select> <a href="#" class="help" title="Například 100 / 10 kilogramů">?</a>
                 </td>
-            </tr>
+            </tr>-->
             <tr>
-                <td><label for="product_quantity">Množství</label></td>
-                <td><input type="number" style="width: 45px" min="-1" name="product_quantity"/> <a href="#" class="help" title="Počet produktů na skladě. Záporná hodnota značí neomezené množství">?</a> </td>
+                <td><label for="product_stock">Množství</label></td>
+                <td><input type="number" style="width: 45px" min="-1" name="product_stock"/> <a href="#" class="help" title="Počet produktů na skladě. Záporná hodnota značí neomezené množství">?</a> </td>
             </tr>
             </tbody>
         </table>
@@ -57,6 +61,8 @@
        <p class="product_description">
            <textarea name="product_description"></textarea>
        </p>
+
+        <input type="submit" value="Přidat produkt" name="addProduct" />
 
     </form>
 

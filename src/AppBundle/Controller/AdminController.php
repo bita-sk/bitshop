@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+
 class AdminController extends Controller
 {
     /**
@@ -24,7 +25,21 @@ class AdminController extends Controller
      */
     public function productAction(Request $request)
     {
-        // replace this example code with whatever you need
+
+        if($request->get('addProduct') != ""){
+            if(!$this->get('app.product.service')->productSave($request)){
+                $this->addFlash(
+                    'success',
+                    'Produkt byl úspěšně vytvořen'
+                );
+            }else{
+                $this->addFlash(
+                    'fail',
+                    'Vytvoření produktu selhalo'
+                );
+            }
+        }
+
         return $this->render('admin/product.html.twig', [
 
         ]);
