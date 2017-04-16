@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/css/global.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/css/header.css') }}"/>
+</head>
+<body>
+<header>
+    <div id="logo">BitShop - Administrace</div>
+    <ul id="menu">
+        <li><a href="#">Produkty</a></li>
+        <li><a href="#">Kategorie</a></li>
+        <li><a href="#">Výrobci</a></li>
+        <li><a href="#">Feeds</a></li>
+        <li><a href="#">Zákazníci</a></li>
+    </ul>
+</header>
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>
