@@ -1,0 +1,71 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block body %}
+    <div class="sub-menu">
+        <ul>
+            <li><i class="fa fa-plus-square" title="Přidat nový produkt" aria-hidden="true"></i></li>
+            <li><i class="fa fa-search" title="Vyhledat produkt" aria-hidden="true"></i></li>
+        </ul>
+    </div>
+
+    <h1 class="title">Přidat nový produkt</h1>
+
+    <form method="POST">
+        <table>
+            <tbody>
+            <tr>
+                <td><label for="product_name">Název</label></td>
+                <td><input type="text" name="product_name"/></td>
+            </tr>
+            <tr>
+                <td><label for="product_category">Kategorie</label></td>
+                <td><input type="text" name="product_category"/> <a href="#" class="help" title="Kategorii můžete uvést později. Nejdříve je nutné nějakou přidat, před přiřazením k produktu">?</a></td>
+            </tr>
+            <tr>
+                <td><label for="product_price">Cena</label></td>
+                <td><input type="number" name="product_price"/> <a href="#" class="help" title="Cenu uvádějte bez DHP, bude automaticko dopočítano podle nastavené sazby">?</a> </td>
+            </tr>
+            <tr>
+                <td><label for="product_ean">Ean</label></td>
+                <td><input type="text" name="product_ean"/> <a href="#" title="Mezinárodní číslo obchodní položky, je jednotná mezinárodní číselná identifikace zejména spotřebních výrobků a dalších obchodovatelných položek, která se na výrobky často tiskne v podobě čárového kódu" class="help">?</a></td>
+            </tr>
+            <tr>
+                <td><label for="product_unit_price">Cena za jednotku</label></td>
+                <td>
+                    <input type="number" name="product_unit_price"/> kč  za
+                </td>
+                <td>
+                    <input type="number" style="width: 45px" name="product_unit_count"/>
+                </td>
+                <td>
+                    <select name="product_unit">
+                        <option value="ks">kus</option>
+                        <option value="g">Gramů</option>
+                        <option value="ks">Kilogramů</option>
+                        <option value="milliliter">Mililitrů</option>
+                        <option value="liter">Litrů</option>
+                    </select> <a href="#" class="help" title="Například 100 / 10 kilogramů">?</a>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="product_quantity">Množství</label></td>
+                <td><input type="number" style="width: 45px" min="-1" name="product_quantity"/> <a href="#" class="help" title="Počet produktů na skladě. Záporná hodnota značí neomezené množství">?</a> </td>
+            </tr>
+            </tbody>
+        </table>
+
+       <p class="product_description">
+           <textarea name="product_description"></textarea>
+       </p>
+
+    </form>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>tinymce.init({selector: 'textarea'});</script>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
