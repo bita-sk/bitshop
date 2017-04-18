@@ -1,0 +1,49 @@
+{% extends 'admin/layout.html.twig' %}
+{% block title %}BitShop - kategorie{% endblock %}
+{% block body %}
+    <div class="sub-menu">
+        <ul>
+            <li><i class="fa fa-plus-square" title="Přidat novou kategorii" aria-hidden="true"></i></li>
+            <li><i class="fa fa-search" title="Vyhledat kategorii" aria-hidden="true"></i></li>
+        </ul>
+    </div>
+
+    <h1 class="title">Přidat novou kategorii</h1>
+
+    <form method="POST">
+        <table>
+            <tbody>
+            <tr>
+                <td><label for="category_name">Název</label></td>
+                <td><input type="text" name="category_name"/></td>
+            </tr>
+            <tr>
+                <td><label for="category_parent">Nadřazená kategorie</label></td>
+                <td>
+                    <select name="category_parent">
+                        <option value="" selected="selected"></option>
+                        {% for category in categories %}
+                            <option value="{{ category.id }}">{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <input type="submit" value="Přidat kategorii" name="addCategory"/>
+
+    </form>
+
+    <h1 class="title">Váše aktuální kategorie</h1>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>tinymce.init({selector: 'textarea'});</script>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

@@ -21,6 +21,12 @@
     </div>
 {% endfor %}
 
+{% for flash_message in app.session.flashBag.get('fail') %}
+    <div class="flash-fail">
+        {{ flash_message }}
+    </div>
+{% endfor %}
+
 <header>
     <a id="logo" href="/">BitShop - Administrace</a>
     <ul id="menu">

@@ -52,15 +52,12 @@ class Category
     /**
      * @var Category
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Category")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      */
     private $parent;
 
-
     /**
-     * Get id
-     *
      * @return int
      */
     public function getId()
@@ -69,22 +66,14 @@ class Category
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Category
+     * @param int $id
      */
-    public function setName($name)
+    public function setId($id)
     {
-        $this->name = $name;
-
-        return $this;
+        $this->id = $id;
     }
 
     /**
-     * Get name
-     *
      * @return string
      */
     public function getName()
@@ -93,22 +82,14 @@ class Category
     }
 
     /**
-     * Set slug
-     *
-     * @param string $slug
-     *
-     * @return Category
+     * @param string $name
      */
-    public function setSlug($slug)
+    public function setName($name)
     {
-        $this->slug = $slug;
-
-        return $this;
+        $this->name = $name;
     }
 
     /**
-     * Get slug
-     *
      * @return string
      */
     public function getSlug()
@@ -117,22 +98,14 @@ class Category
     }
 
     /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Category
+     * @param string $slug
      */
-    public function setCreatedAt($createdAt)
+    public function setSlug($slug)
     {
-        $this->createdAt = $createdAt;
-
-        return $this;
+        $this->slug = $slug;
     }
 
     /**
-     * Get createdAt
-     *
      * @return \DateTime
      */
     public function getCreatedAt()
@@ -141,23 +114,15 @@ class Category
     }
 
     /**
-     * Set updateAt
-     *
-     * @param string $updateAt
-     *
-     * @return Category
+     * @param \DateTime $createdAt
      */
-    public function setUpdateAt($updateAt)
+    public function setCreatedAt($createdAt)
     {
-        $this->updateAt = $updateAt;
-
-        return $this;
+        $this->createdAt = $createdAt;
     }
 
     /**
-     * Get updateAt
-     *
-     * @return string
+     * @return \DateTime
      */
     public function getUpdateAt()
     {
@@ -165,27 +130,29 @@ class Category
     }
 
     /**
-     * Set parentId
-     *
-     * @param integer $parentId
-     *
-     * @return Category
+     * @param \DateTime $updateAt
      */
-    public function setParentId($parentId)
+    public function setUpdateAt($updateAt)
     {
-        $this->parentId = $parentId;
-
-        return $this;
+        $this->updateAt = $updateAt;
     }
 
     /**
-     * Get parentId
-     *
-     * @return int
+     * @return Category
      */
-    public function getParentId()
+    public function getParent()
     {
-        return $this->parentId;
+        return $this->parent;
     }
+
+    /**
+     * @param Category $parent
+     */
+    public function setParent($parent)
+    {
+        $this->parent = $parent;
+    }
+
+
 }
 

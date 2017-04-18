@@ -26,22 +26,57 @@ class AdminController extends Controller
     public function productAction(Request $request)
     {
 
-        if($request->get('addProduct') != ""){
-            if(!$this->get('app.product.service')->productSave($request)){
+        if ($request->get('addProduct') != "") {
+            if (trim($request->get('product_name')) == "") {
+                $this->addFlash(
+                    'fail',
+                    'Název produktu je povinný'
+                );
+            } else {
+                $this->get('app.product.service')->productSave($request);
                 $this->addFlash(
                     'success',
                     'Produkt byl úspěšně vytvořen'
                 );
-            }else{
+            }
+
+        }
+
+        $categories = $this->get('app.category.service')->getAll();
+        $producers = $this->get('app.producer.service')->getAll();
+
+        return $this->render('admin/product.html.twig', [
+            'categories' => $categories,
+            'producers' => $producers
+        ]);
+    }
+
+    /**
+     * @Route("/admin/category", name="category")
+     */
+    public function categoryAction(Request $request)
+    {
+
+        if ($request->get('addCategory') != "") {
+            if ($request->get('category_name') != "") {
+                $this->get('app.category.service')->saveCategory($request);
+
+                $this->addFlash(
+                    'success',
+                    'Kategorie byla úspěšně vytvořena'
+                );
+            } else {
                 $this->addFlash(
                     'fail',
-                    'Vytvoření produktu selhalo'
+                    'Název kategorie je povinný'
                 );
             }
         }
 
-        return $this->render('admin/product.html.twig', [
+        $categories = $this->get('app.category.service')->getAll();
 
+        return $this->render('admin/category.html.twig', [
+            'categories' => $categories,
         ]);
     }
 }

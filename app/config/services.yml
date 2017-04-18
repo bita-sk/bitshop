@@ -6,7 +6,7 @@ parameters:
 services:
     app.product.service:
         class:   AppBundle\Service\ProductService
-        arguments: ['@doctrine.orm.default_entity_manager']
+        arguments: ['@doctrine.orm.default_entity_manager','@service_container']
     app.category.service:
         class:   AppBundle\Service\CategoryService
         arguments: ['@doctrine.orm.default_entity_manager']

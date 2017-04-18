@@ -28,4 +28,9 @@ class ProducerService
         $this->em = $entityManager;
     }
 
+
+    public function getAll()
+    {
+        return $this->em->getRepository("AppBundle:Producer")->findAll();
+    }
 }
